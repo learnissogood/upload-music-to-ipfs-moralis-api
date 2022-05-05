@@ -1,7 +1,8 @@
 let fs = require("fs");
 let axios = require("axios");
+require ("dotenv").config();
 
-let media = [];
+let media = ["JTiger.mp3", "JTwinkle.mp3", "NonFungible.png"];
 let ipfsArray = [];
 let promises = [];
 
@@ -24,7 +25,7 @@ Promise.all(promises).then(() => {
     .post("https://deep-index.moralis.io/api/v2/ipfs/uploadFolder", ipfsArray, {
       headers: {
         "X-API-KEY":
-          "<Your API Key>",
+          process.env.MORALIS_API_KEY,
         "Content-Type": "application/json",
         accept: "application/json",
       },
